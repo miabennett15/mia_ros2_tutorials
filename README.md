@@ -1,4 +1,4 @@
-# HDI Backpack "Robot" ROS2 Workspace for Indoor Mapping
+# HDI Backpack Robot Operating System 2 (ROS2) Workspace for Indoor Mapping
 
 ## Setup
 
