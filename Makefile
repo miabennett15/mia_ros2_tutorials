@@ -3,3 +3,4 @@ ROBOT_NAME="hdi_backpack"
 create_node:
 	cd src/
 	ros2 pkg create $(ROBOT_NAME)_$(name) --build-type ament_python --dependencies rclpy
+	cd ..
