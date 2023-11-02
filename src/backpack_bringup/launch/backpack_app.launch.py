@@ -37,7 +37,7 @@ def generate_launch_description():
     # Bosch BNO055 Inertial Measurement Unit (IMU) node
     imu_config = os.path.join(
         get_package_share_directory('backpack_bringup'),
-        'launch',
+        'config',
         'bno055_params.yaml'
     )
     imu_driver = Node(
@@ -47,8 +47,8 @@ def generate_launch_description():
     )
 
     # Add the LiDAR nodes
-    ld.add_action(ldlidar_node)
-    ld.add_action(base_link_to_laser_tf_node)
+    # ld.add_action(ldlidar_node)
+    # ld.add_action(base_link_to_laser_tf_node)
 
     # Add the IMU node
     ld.add_action(imu_driver)
