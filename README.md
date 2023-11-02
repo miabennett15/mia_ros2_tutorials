@@ -10,7 +10,8 @@ https://www.youtube.com/c/RoboticsBackEnd
 
 Build the project with
 
-    $ colcon build
+    $ cd ~/ros2_ws
+    $ make build_all
 
 If you see the error:
 
