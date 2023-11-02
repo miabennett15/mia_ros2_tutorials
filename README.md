@@ -5,13 +5,13 @@ https://www.youtube.com/c/RoboticsBackEnd
 
 ## Setup
 
-    $ cd ~
-    $ git clone https://github.com/HealthDataInsight/hdi_backpack_ros2_ws ros2_ws
+    cd ~
+    git clone https://github.com/HealthDataInsight/hdi_backpack_ros2_ws ros2_ws
 
 Build the project with
 
-    $ cd ~/ros2_ws
-    $ make build_all
+    cd ~/ros2_ws
+    make build_all
 
 If you see the error:
 
@@ -19,4 +19,4 @@ If you see the error:
 
 You will need to downgrade setuptools, with:
 
-    $ pip3 install setuptools==58.2.0
+    pip3 install setuptools==58.2.0
