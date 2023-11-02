@@ -9,7 +9,7 @@ build_bringup:
 	colcon build --packages-select backpack_bringup --symlink-install
 
 build_all:
-	colcon build --symlink-install
+	colcon build --packages-ignore ldlidar_stl_ros2 --symlink-install
 	. install/setup.bash
 
 launch:
