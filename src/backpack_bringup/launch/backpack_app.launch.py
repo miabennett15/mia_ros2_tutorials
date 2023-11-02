@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
@@ -32,7 +34,23 @@ def generate_launch_description():
         arguments=['0','0','0.18','0','0','0','base_link','base_laser']
     )
 
+    # Bosch BNO055 Inertial Measurement Unit (IMU) node
+    imu_config = os.path.join(
+        get_package_share_directory('backpack_bringup'),
+        'launch',
+        'bno055_params.yaml'
+    )
+    imu_driver = Node(
+        package = 'bno055',
+        executable = 'bno055',
+        parameters = [imu_config]
+    )
+
+    # Add the LiDAR nodes
     ld.add_action(ldlidar_node)
     ld.add_action(base_link_to_laser_tf_node)
+
+    # Add the IMU node
+    ld.add_action(imu_driver)
 
     return ld

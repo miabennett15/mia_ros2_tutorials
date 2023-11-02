@@ -8,7 +8,9 @@ create_node:
 build_bringup:
 	colcon build --packages-select backpack_bringup --symlink-install
 
-build_all: build_bringup
+build_all:
+	colcon build --symlink-install
+	. install/setup.bash
 
 launch:
 	ros2 launch backpack_bringup backpack_app.launch.py
