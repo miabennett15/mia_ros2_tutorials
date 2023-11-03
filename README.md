@@ -1,5 +1,10 @@
 # HDI Backpack Robot Operating System 2 (ROS2) Workspace for Indoor Mapping
 
+<!-- HDI Way of Working: Badge Holder Start -->
+[![HDI Way of Working](https://img.shields.io/badge/HDI-Way%20of%20Working-8169e3?labelColor=000)](https://healthdatainsight.github.io/way_of_working/)
+<!-- HDI Way of Working: Badge Holder End -->
+
+
 https://www.youtube.com/watch?v=Gg25GfA456o
 https://www.youtube.com/c/RoboticsBackEnd
 
