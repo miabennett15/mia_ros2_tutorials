@@ -28,7 +28,7 @@ Build the project with
 
   ```bash
   cd ~/ros2_ws
-  make build_all
+  make update_and_build
   ```
 
 If you see the error:
@@ -43,7 +43,7 @@ You will need to downgrade setuptools, with:
   pip3 install setuptools==58.2.0
   ```
 
-and re-run `make build_all`.
+and re-run `make update_and_build`.
 
 ### Setup environment
 

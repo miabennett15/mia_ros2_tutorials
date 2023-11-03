@@ -9,11 +9,15 @@ build_bringup:
 	colcon build --packages-select backpack_bringup --symlink-install
 
 build_all:
+	rosdep install --from-paths src -y --ignore-src
+	colcon build --packages-ignore ldlidar_stl_ros2 --symlink-install
+	echo "Now run: source ./install/setup.bash"
+
+build_update:
 	sudo apt update
 	rosdep update
-	rosdep install --from-paths src -y --ignore-src
-	colcon build --symlink-install
-	. ./install/setup.bash
+
+update_and_build: build_update build_all
 
 launch:
 	ros2 launch backpack_bringup backpack_app.launch.py
