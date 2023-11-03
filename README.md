@@ -13,9 +13,13 @@ https://www.youtube.com/c/RoboticsBackEnd
 
 ### Clone the repository
 
+Clone the repository and initialise submodules with
+
   ```bash
   cd ~
   git clone https://github.com/HealthDataInsight/hdi_backpack_ros2_ws ros2_ws
+  cd ~/ros2_ws
+  git submodule update --init --recursive
   ```
 
 ## Build the project
