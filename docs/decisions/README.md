@@ -1,7 +1,3 @@
 # Decisions
 
-This directory contains decision records for the project.
-
-For new ADRs, please use [adr-template.md](adr-template.md) as basis.
-More information on MADR is available at <https://adr.github.io/madr/>.
-General information about architectural decision records is available at <https://adr.github.io/>.
+Decisions for this project should be captured in the [indoor-mapping](https://github.com/HealthDataInsight/indoor-mapping) repository.
