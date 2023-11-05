@@ -10,7 +10,7 @@ build_bringup:
 
 build_all:
 	rosdep install --from-paths src -y --ignore-src
-	colcon build --packages-ignore ldlidar_stl_ros2 --symlink-install
+	colcon build --symlink-install
 	echo "Now run: source ./install/setup.bash"
 
 build_update:
