@@ -116,8 +116,9 @@ Configure CMake to detect and use Clang:
 
   ```bash
   sudo apt install clang
-  export CC=clang
-  export CXX=clang++
+  echo "export CC=clang" >> ~/.bashrc
+  echo "export CXX=clang++" >> ~/.bashrc
+  source ~/.bashrc
   ```
 
 ~If you have already installed ROS 2 another way (either via Debians or the binary distribution), make sure that you run the below commands in a fresh environment that does not have those other installations sourced.
