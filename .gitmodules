@@ -1,7 +1,6 @@
 [submodule "src/ldlidar_stl_ros2"]
 	path = src/ldlidar_stl_ros2
 	url = https://github.com/HealthDataInsight/ldlidar_stl_ros2
-	branch = feature/debian-bookworm-fix
 [submodule "src/bno055"]
 	path = src/bno055
 	url = https://github.com/flynneva/bno055.git
