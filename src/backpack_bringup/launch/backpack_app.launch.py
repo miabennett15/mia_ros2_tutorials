@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -52,5 +53,12 @@ def generate_launch_description():
 
     # Add the IMU node
     ld.add_action(imu_driver)
+
+    # Foxglove bridge node
+    foxglove_node = Node(
+        package='foxglove_bridge',
+        executable='foxglove_bridge'
+    )
+    ld.add_action(foxglove_node)
 
     return ld
