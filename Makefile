@@ -15,9 +15,11 @@ build_all:
 
 build_update:
 	sudo apt update
-	git submodule update --init --recursive --remote
+	rm -r src/imu_tf
+	git submodule update --init --recursive --remote --force
 	rosdep update
-	ln -sf $(pwd)/src/ros_imu_tools/imu_tf $(pwd)/src/imu_tf
+	mv ${HOME}/ros2_ws/src/ros_imu_tools/imu_tf ${HOME}/ros2_ws/src/imu_tf
+	rm -rf ${HOME}/ros2_ws/src/ros_imu_tools
 
 update_and_build: build_update build_all
 
