@@ -55,3 +55,23 @@ Source the workspace in your `.bashrc` file.
   echo "source $HOME/ros2_ws/install/setup.bash" >> ~/.bashrc
   source ~/.bashrc
   ```
+
+### Testing with bags
+
+Setup the imu-to-transform converter (make sure you source the install)
+
+  ```bash
+  ros2 run tf_imu transform
+  ```
+
+Record on `/tf`:
+
+  ```bash
+  ros2 bag record tf
+  ```
+
+You can play back a bag and remap topics with
+
+  ```bash
+  ros2 bag play data/test_moving_imu --remap bno055/imu:=imu/data
+  ```

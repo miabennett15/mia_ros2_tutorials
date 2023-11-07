@@ -35,6 +35,11 @@ def generate_launch_description():
         arguments=['0','0','0.18','0','0','0','base_link','base_laser']
     )
 
+    # Add the LiDAR nodes
+    ld.add_action(ldlidar_node)
+    ld.add_action(base_link_to_laser_tf_node)
+
+
     # Bosch BNO055 Inertial Measurement Unit (IMU) node
     imu_config = os.path.join(
         get_package_share_directory('backpack_bringup'),
@@ -44,15 +49,25 @@ def generate_launch_description():
     imu_driver = Node(
         package = 'bno055',
         executable = 'bno055',
-        parameters = [imu_config]
+        parameters = [imu_config],
+        remappings=[
+            ('/imu/data_raw','/bno055/imu_raw')
+            ('/imu/data','/bno055/imu'),
+        ]
     )
-
-    # Add the LiDAR nodes
-    ld.add_action(ldlidar_node)
-    ld.add_action(base_link_to_laser_tf_node)
-
     # Add the IMU node
     ld.add_action(imu_driver)
+
+
+    # IMU transformer
+    imu_transformer = Node(
+        package='imu_tf',
+        executable='transform',
+        remappings=[
+            ('/tf','/tf_imu')
+            ]
+    )
+    ld.add_action(imu_transformer)
 
     # Foxglove bridge node
     foxglove_node = Node(

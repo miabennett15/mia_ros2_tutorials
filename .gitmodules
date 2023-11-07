@@ -5,3 +5,6 @@
 	path = src/ldlidar_stl_ros2
 	url = https://github.com/HealthDataInsight/ldlidar_stl_ros2
 	branch = master
+[submodule "src/ros_imu_tools"]
+	path = src/ros_imu_tools
+	url = https://gitlab.com/boldhearts/ros2_imu_tools
