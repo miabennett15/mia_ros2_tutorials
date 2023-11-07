@@ -27,11 +27,11 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # Parameters for UART connection to the BNO055 motion sensor.
-bno055:
+bno055_imu_driver:
   ros__parameters:
     ros_topic_prefix: "bno055/"
     connection_type: "uart"
-    uart_port: "/dev/serial0"
+    uart_port: "/dev/ttyAMA0"
     uart_baudrate: 115200
     uart_timeout: 0.1
     data_query_frequency: 100

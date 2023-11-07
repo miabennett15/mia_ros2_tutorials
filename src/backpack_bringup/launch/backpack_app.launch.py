@@ -8,11 +8,19 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
 
+    # Launch config file
+    config = os.path.join(
+        get_package_share_directory('backpack_bringup'),
+        'config',
+        'params.yaml'
+    )
+
+
     # LDROBOT LiDAR publisher node
     ldlidar_node = Node(
         package='ldlidar_stl_ros2',
         executable='ldlidar_stl_ros2_node',
-        name='STL27L',
+        name='stl27l_lidar_driver',
         output='screen',
         parameters=[
             {'product_name': 'LDLiDAR_STL27L'},
@@ -41,18 +49,14 @@ def generate_launch_description():
 
 
     # Bosch BNO055 Inertial Measurement Unit (IMU) node
-    imu_config = os.path.join(
-        get_package_share_directory('backpack_bringup'),
-        'config',
-        'bno055_params.yaml'
-    )
     imu_driver = Node(
         package = 'bno055',
         executable = 'bno055',
-        parameters = [imu_config],
-        remappings=[
-            ('/imu/data_raw','/bno055/imu_raw')
-            ('/imu/data','/bno055/imu'),
+        name = 'bno055_imu_driver',
+        parameters = [config],
+        remappings = [
+            ('/bno055/imu_raw', '/imu/data_raw'),
+            ('/bno055/imu', '/imu/data'),
         ]
     )
     # Add the IMU node
