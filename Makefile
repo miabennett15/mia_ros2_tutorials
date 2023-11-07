@@ -11,7 +11,7 @@ build_bringup:
 build_all:
 	rosdep install --from-paths src -y --ignore-src
 	colcon build --symlink-install
-	echo "Now run: source ./install/setup.bash"
+	@echo "\nNow run: source ./install/setup.bash"
 
 build_update:
 	sudo apt update
