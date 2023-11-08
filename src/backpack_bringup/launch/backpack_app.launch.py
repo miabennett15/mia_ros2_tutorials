@@ -61,15 +61,24 @@ def generate_launch_description():
     )
     # Add the IMU node
     ld.add_action(imu_driver)
-
+    
+    # Add transform to IMU frame
+    static_transform = Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            arguments = [
+                '--x', '0', '--y', '0', 
+                '--z', '0', '--yaw', '0', '--pitch', '0', '--roll', '0', 
+                '--frame-id', 'base_link', 
+                '--child-frame-id', 'imu_link_oriented'
+            ]
+        )
+    ld.add_action(static_transform)
 
     # IMU transformer
     imu_transformer = Node(
         package='imu_tf',
         executable='transform',
-        remappings=[
-            ('/tf','/tf_imu')
-            ]
     )
     ld.add_action(imu_transformer)
 
