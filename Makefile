@@ -15,7 +15,7 @@ build_all:
 
 build_update:
 	sudo apt update
-	git submodule update --init --recursive --remote
+	git submodule update --init --recursive --remote --force
 	rosdep update
 
 update_and_build: build_update build_all
