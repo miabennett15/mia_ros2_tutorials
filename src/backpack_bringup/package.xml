@@ -10,6 +10,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>bno055</exec_depend>
+  <exec_depend>foxglove_bridge</exec_depend>
   <exec_depend>ldlidar_stl_ros2</exec_depend>
   <exec_depend>imu_tf</exec_depend>
   <exec_depend>tf2_ros</exec_depend>

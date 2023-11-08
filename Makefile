@@ -9,7 +9,7 @@ build_bringup:
 	colcon build --packages-select backpack_bringup --symlink-install
 
 build_all:
-	rosdep install --from-paths src -y --ignore-src
+	rosdep install --from-paths src -y --ignore-src --os=debian:bullseye
 	colcon build --symlink-install
 	@echo "\nNow run: source ./install/setup.bash"
 

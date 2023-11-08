@@ -82,4 +82,12 @@ def generate_launch_description():
     )
     ld.add_action(imu_transformer)
 
+    # Foxglove bridge node
+    foxglove_node = Node(
+        package='foxglove_bridge',
+        executable='foxglove_bridge'
+    )
+    ld.add_action(foxglove_node)
+
+
     return ld

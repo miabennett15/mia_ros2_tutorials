@@ -8,3 +8,6 @@
 [submodule "src/imu_tf"]
 	path = src/imu_tf
 	url = https://github.com/HealthDataInsight/imu_tools_ros2
+[submodule "src/ros-foxglove-bridge"]
+	path = src/ros-foxglove-bridge
+	url = https://github.com/foxglove/ros-foxglove-bridge.git
