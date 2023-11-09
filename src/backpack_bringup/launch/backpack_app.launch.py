@@ -26,7 +26,7 @@ def generate_launch_description():
             {'product_name': 'LDLiDAR_STL27L'},
             {'topic_name': 'scan'},
             {'frame_id': 'base_laser'},
-            {'port_name': '/dev/ttyUSB0'},
+            {'port_name': '/dev/ttyAMA2'},
             {'port_baudrate': 921600},
             {'laser_scan_dir': True},
             {'enable_angle_crop_func': False},
