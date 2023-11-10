@@ -6,27 +6,32 @@ create_node:
 	cd ..
 
 build_bringup:
+	@echo "\nBuilding backpack_bringup\n"
 	rosdep install --from-paths src/backpack_bringup -y --ignore-src
 	colcon build --packages-select backpack_bringup --symlink-install
 
 build_bno055:
+	@echo "\nBuilding bno055\n"
 	rosdep install --from-paths src/bno055 -y --ignore-src
 	colcon build --packages-select bno055
 
 build_imu_tf:
+	@echo "\nBuilding imu_tf\n"
 	rosdep install --from-paths src/imu_tf -y --ignore-src
 	colcon build --packages-select imu_tf --symlink-install
 
 build_ldlidar_stl_ros2:
+	@echo "\nBuilding ldlidar_stl_ros2\n"
 	rosdep install --from-paths src/ldlidar_stl_ros2 -y --ignore-src
 	colcon build --packages-select ldlidar_stl_ros2
 
 build_ros_foxglove_bridge:
+	@echo "\nBuilding foxglove_bridge\n"
 	rosdep install --from-paths src/ros-foxglove-bridge -y --ignore-src --os=debian:bullseye
 	colcon build --packages-select foxglove_bridge
 
 build_all: build_bringup build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_ros_foxglove_bridge
-	@echo "\nNow run: source ./install/setup.bash"
+	@echo "\nNow run: source ./install/setup.bash\n"
 
 build_update:
 	sudo apt update
