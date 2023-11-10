@@ -30,7 +30,7 @@ build_ros_foxglove_bridge:
 	rosdep install --from-paths src/ros-foxglove-bridge -y --ignore-src --os=debian:bullseye
 	colcon build --packages-select foxglove_bridge
 
-build_all: build_bringup build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_ros_foxglove_bridge
+build_all: build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_ros_foxglove_bridge build_bringup
 	@echo "\nNow run: source ./install/setup.bash\n"
 
 build_update:
