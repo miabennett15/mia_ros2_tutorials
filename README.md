@@ -8,6 +8,7 @@
 ## Documentation
 
 * [Installing ROS2 (Iron) on Raspberry Pi OS (Bookworm)](docs/install-ros2-iron-on-rpi-os-bookworm.md)
+* [Raspberry Pi interface configuration](docs/rpi-interface-configuration.md)
 * [Project Decision Records](https://github.com/HealthDataInsight/indoor-mapping/blob/main/docs/decisions)
 * [Useful links](https://github.com/HealthDataInsight/indoor-mapping/blob/main/docs/useful-links.md)
 
