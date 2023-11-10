@@ -5,9 +5,11 @@
 [![Inclusive Language](https://github.com/HealthDataInsight/hdi_backpack_ros2_ws/actions/workflows/inclusive-language.yml/badge.svg)](https://github.com/HealthDataInsight/hdi_backpack_ros2_ws/actions/workflows/inclusive-language.yml)
 <!-- HDI Way of Working: Badge Holder End -->
 
+## Documentation
 
-https://www.youtube.com/watch?v=Gg25GfA456o
-https://www.youtube.com/c/RoboticsBackEnd
+* [Installing ROS2 (Iron) on Raspberry Pi OS (Bookworm)](docs/install-ros2-iron-on-rpi-os-bookworm.md)
+* [Project Decision Records](https://github.com/HealthDataInsight/indoor-mapping/blob/main/docs/decisions)
+* [Useful links](https://github.com/HealthDataInsight/indoor-mapping/blob/main/docs/useful-links.md)
 
 ## Setup
 
