@@ -6,7 +6,7 @@ We have currently:
 
 * enabled UART ports 0, 2 and 4,
 * enabled Hardware PWM GPIO Pin 19,
-* disabled Bluetooth (as it is currently unused).
+* switched off Bluetooth (as it is currently unused).
 
 The following was added to the end of `/boot/config.txt`. The Raspberry Pi 5 symlinks `/boot/config.txt` to `/boot/firmware/config.txt`, so you can still edit the file using:
 
