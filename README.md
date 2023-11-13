@@ -31,6 +31,7 @@ Build the project with
 
   ```bash
   cd ~/ros2_ws
+  make setup
   make update_and_build
   ```
 
