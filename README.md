@@ -79,3 +79,13 @@ You can play back a bag and remap topics with
   ```bash
   ros2 bag play data/test_moving_imu --remap bno055/imu:=imu/data
   ```
+
+### Running automated tests and linter
+
+To run all the colcon tests and flake8 linter, run:
+
+  ```bash
+  make test
+  ```
+
+When adding a new (non-library) package, remember to add the package name to the `colcon test --ctest-args tests` line in the `Makefile`.

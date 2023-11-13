@@ -7,7 +7,7 @@ create_node:
 
 # Install dependencies, not available through rosdep
 setup:
-	sudo install -y python3-transforms3d
+	sudo apt install -y python3-transforms3d
 
 build_bringup:
 	@echo "\nBuilding backpack_bringup\n"
@@ -52,3 +52,8 @@ update_and_build: build_update build_all
 
 launch:
 	ros2 launch backpack_bringup backpack_app.launch.py
+
+test:
+	colcon test-result --all --delete-yes
+	colcon test --ctest-args tests --packages-select backpack_bringup
+	colcon test-result --all --verbose
