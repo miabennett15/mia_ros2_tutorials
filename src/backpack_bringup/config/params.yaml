@@ -53,3 +53,10 @@ bno055_imu_driver:
     # variance_angular_vel: [0.0, 0.0, 0.0] # [rad/s]
     # variance_orientation: [0.0, 0.0, 0.0] # [rad]
     # variance_mag: [0.0, 0.0, 0.0] # [Tesla]
+nmea_navsat_driver:
+  ros__parameters:
+    port: "/dev/ttyAMA4"
+    baud: 38400
+    frame_id: "gps"
+    time_ref_source: "gps"
+    useRMC: False

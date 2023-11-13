@@ -82,12 +82,23 @@ def generate_launch_description():
     )
     ld.add_action(imu_transformer)
 
+
     # Foxglove bridge node
     foxglove_node = Node(
         package='foxglove_bridge',
         executable='foxglove_bridge'
     )
     ld.add_action(foxglove_node)
+
+
+    # GPS
+    gps_driver = Node(
+        package='nmea_navsat_driver',
+        executable='nmea_serial_driver',
+        output='screen',
+        parameters=[config]
+    )
+    ld.add_action(gps_driver)
 
 
     return ld
