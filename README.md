@@ -60,6 +60,20 @@ Source the workspace in your `.bashrc` file.
   source ~/.bashrc
   ```
 
+### Running the backpack robot
+
+To run the robot on the backpack Raspberry Pi (with sensor driver nodes running), use:
+
+  ```bash
+  ros2 launch backpack_bringup backpack_app.launch.py
+  ```
+
+To run the robot on any machine replaying sensor data bags, use:
+
+  ```bash
+  ros2 launch backpack_bringup backpack_app.launch.py run_sensors:=False
+  ```
+
 ### Testing with bags
 
 Setup the imu-to-transform converter (make sure you source the install)
