@@ -48,7 +48,13 @@ build_ros_foxglove_bridge:
 	rosdep install --from-paths src/ros-foxglove-bridge -y --ignore-src --os=debian:bullseye
 	colcon build --packages-select foxglove_bridge
 
-build_all: build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_nmea_navsat_driver build_ros_foxglove_bridge build_bringup
+build_system_stats_pkg:
+	@echo -e "\nBuilding system_stats_pkg...\n"
+	if [ -f install/setup.bash ]; then source install/setup.bash; fi
+	rosdep install --from-paths src/system_stats_pkg -y --ignore-src
+	colcon build --packages-select system_stats_pkg --symlink-install
+
+build_all: build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_nmea_navsat_driver build_ros_foxglove_bridge build_system_stats_pkg build_bringup
 	@echo -e "\nNow run: source ./install/setup.bash\n"
 
 build_update: setup
@@ -67,5 +73,5 @@ launch_without_sensors:
 
 test:
 	colcon test-result --all --delete-yes
-	colcon test --ctest-args tests --packages-select backpack_bringup
+	colcon test --ctest-args tests --packages-select backpack_bringup system_stats_pkg
 	colcon test-result --all --verbose
