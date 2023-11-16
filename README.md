@@ -74,6 +74,24 @@ To run the robot on any machine replaying sensor data bags, use:
   ros2 launch backpack_bringup backpack_app.launch.py run_sensors:=False
   ```
 
+### Recording sensor data bags
+
+To record all the topics published by backpack sensors and save it in a bag called `test_calibration_bag`, for example, use:
+
+  ```bash
+  make record_sensor_bag name=test_calibration_bag
+  ```
+
+It will be saved in the `bags` folder. The folder exists for convenience, but please do not force commit any bags into this repository.
+
+If recorded remotely, use SCP to copy it to your current local folder with:
+
+  ```bash
+  scp -r <username>@<server_name>:/home/<username>/ros2_ws/bags/test_calibration_bag .
+  ```
+
+If you add a new sensor to the robot, please add the sensor topics to the `record_sensor_bag` task in the `Makefile`.
+
 ### Testing with bags
 
 Setup the imu-to-transform converter (make sure you source the install)

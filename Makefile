@@ -71,6 +71,14 @@ launch:
 launch_without_sensors:
 	ros2 launch backpack_bringup backpack_app.launch.py run_sensors:=False
 
+# Usage: make record_sensor_bag name=test_calibration_bag
+record_sensor_bag:
+	ros2 bag record /fix /heading /time_reference /vel \
+	                /bno055/calib_status /bno055/mag /bno055/temp /imu/data /imu/data_raw \
+	                /scan \
+	                /system_stats/cpu_usage /system_stats/disk_usage /system_stats/swap_mem_usage /system_stats/virtual_mem_usage \
+			-o bags/$(name)
+
 test:
 	colcon test-result --all --delete-yes
 	colcon test --ctest-args tests --packages-select backpack_bringup system_stats_pkg

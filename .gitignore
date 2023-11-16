@@ -1,4 +1,5 @@
 .vscode
+bags/
 build/
 install/
 log/
