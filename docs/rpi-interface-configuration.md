@@ -42,9 +42,9 @@ We are currently using the GPIO header as follows:
 
 | Use | Configuration | GPIO Pin | Pin # | Pin # | GPIO Pin | Configuration | Use |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | - | 3v3 | 1 | 2 | 5v | - |  |
-|  |  |  | 3 | 4 | 5v | - |  |
-|  |  |  | 5 | 6 | Ground |  |  |
+| GPS IOREF, IMU Vin, IMU PS1 | - | 3v3 | 1 | 2 | 5v | - | GPS 5v |
+|  |  |  | 3 | 4 | 5v | - | LiDAR 5v |
+|  |  |  | 5 | 6 | Ground | - | IMU Ground |
 | LiDAR _unused_&dagger; | TXD2 | GPIO 4 | 7 | 8 | GPIO 14 | TXD0 | IMU RX |
 |  | - | Ground | 9 | 10 | GPIO 15 | RXD0 | IMU TX |
 |  |  |  | 11 | 12 | GPIO 18 | PWM0 |  |
@@ -57,8 +57,8 @@ We are currently using the GPIO header as follows:
 |  | - | Ground | 25 | 26 |  |  |  |
 |  |  |  | 27 | 28 |  |  |  |
 | LiDAR TX | RXD2 | GPIO 5 | 29 | 30 | Ground | - |  |
-|  |  |  | 31 | 32 | GPIO 12 | TXD4 |  |
-| GPS TX | RXD4 | GPIO 13 | 33 | 34 | Ground | - |  |
+|  |  |  | 31 | 32 | GPIO 12 | TXD4 | GPS RX |
+| GPS TX | RXD4 | GPIO 13 | 33 | 34 | Ground | - | GPS Ground |
 | LiDAR PWM | PWM1 | GPIO 19 | 35 | 36 |  |  |  |
 |  |  |  | 37 | 38 |  |  |  |
 |  | - | Ground | 39 | 40 |  |  |  |
