@@ -1,0 +1,26 @@
+repositories:
+  bno055:
+    type: git
+    url: https://github.com/flynneva/bno055.git
+  ldlidar_stl_ros2:
+    type: git
+    url: https://github.com/HealthDataInsight/ldlidar_stl_ros2
+#	branch = master
+  ros2_imu_tools:
+    type: git
+#	url = https://github.com/HealthDataInsight/imu_tools_ros2
+    url: https://gitlab.com/boldhearts/ros2_imu_tools.git
+  ros-foxglove-bridge:
+    type: git
+    url: https://github.com/foxglove/ros-foxglove-bridge.git
+  nmea_navsat_driver:
+    type: git
+    url: https://github.com/ros-drivers/nmea_navsat_driver.git
+    version: ros2
+  nmea_msgs:
+    type: git
+    url: https://github.com/ros-drivers/nmea_msgs.git
+    version: ros2
+  tf_transformations:
+    type: git
+    url: https://github.com/DLu/tf_transformations.git

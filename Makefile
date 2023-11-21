@@ -7,9 +7,19 @@ create_node:
 	ros2 pkg create $(ROBOT_NAME)_$(name) --build-type ament_python --dependencies rclpy
 	cd ..
 
-# Install dependencies, not available through rosdep
-setup:
+dependencies:
+	@echo -e "\nBuilding dependencies...\n"
+	# Install dependencies, not available through rosdep
 	sudo apt install -y python3-tf2-ros python3-transforms3d
+	mkdir -p ~/ros2_ws_dependencies/src
+	cd ~/ros2_ws_dependencies && \
+	  vcs import --input ~/ros2_ws/dependency.repos src && \
+	  sudo apt upgrade && \
+	  rosdep update && \
+ 	  rosdep install --from-paths src/ros-foxglove-bridge -y --ignore-src --os=debian:bullseye && \
+	  rosdep install --from-paths src --ignore-src -y --skip-keys "nlohmann-json-dev" && \
+	  colcon build --symlink-install
+	@echo -e "\nNow run: source ~/ros2_ws_dependencies/install/setup.bash\n"
 
 build_bringup:
 	@echo -e "\nBuilding backpack_bringup...\n"
@@ -17,53 +27,19 @@ build_bringup:
 	rosdep install --from-paths src/backpack_bringup -y --ignore-src
 	colcon build --packages-select backpack_bringup --symlink-install
 
-build_bno055:
-	@echo -e "\nBuilding bno055...\n"
-	if [ -f install/setup.bash ]; then source install/setup.bash; fi
-	rosdep install --from-paths src/bno055 -y --ignore-src
-	colcon build --packages-select bno055
-
-build_imu_tf:
-	@echo -e "\nBuilding imu_tf...\n"
-	if [ -f install/setup.bash ]; then source install/setup.bash; fi
-	rosdep install --from-paths src/imu_tf -y --ignore-src
-	colcon build --packages-select imu_tf --symlink-install
-
-build_ldlidar_stl_ros2:
-	@echo -e "\nBuilding ldlidar_stl_ros2...\n"
-	if [ -f install/setup.bash ]; then source install/setup.bash; fi
-	rosdep install --from-paths src/ldlidar_stl_ros2 -y --ignore-src
-	colcon build --packages-select ldlidar_stl_ros2
-
-# nmea_navsat_driver and two dependencies are not available as packages and need to be included and built locally
-build_nmea_navsat_driver:
-	@echo -e "\nBuilding nmea_navsat_driver and local dependencies...\n"
-	if [ -f install/setup.bash ]; then source install/setup.bash; fi
-	rosdep install --from-paths src/nmea_msgs src/nmea_navsat_driver src/tf_transformations -y --ignore-src
-	colcon build --packages-select nmea_msgs nmea_navsat_driver tf_transformations --symlink-install
-
-build_ros_foxglove_bridge:
-	@echo -e "\nBuilding foxglove_bridge...\n"
-	if [ -f install/setup.bash ]; then source install/setup.bash; fi
-	rosdep install --from-paths src/ros-foxglove-bridge -y --ignore-src --os=debian:bullseye
-	colcon build --packages-select foxglove_bridge
-
 build_system_stats_pkg:
 	@echo -e "\nBuilding system_stats_pkg...\n"
 	if [ -f install/setup.bash ]; then source install/setup.bash; fi
 	rosdep install --from-paths src/system_stats_pkg -y --ignore-src
 	colcon build --packages-select system_stats_pkg --symlink-install
 
-build_all: build_bno055 build_imu_tf build_ldlidar_stl_ros2 build_nmea_navsat_driver build_ros_foxglove_bridge build_system_stats_pkg build_bringup
+build_all:
+	rm -rf rm build/ install/ log/
+	rosdep install --from-paths src -y --ignore-src
+	colcon build --symlink-install
 	@echo -e "\nNow run: source ./install/setup.bash\n"
 
-build_update: setup
-	rm -rf rm build/ install/ log/
-	sudo apt update
-	git submodule update --init --recursive --remote --force
-	rosdep update
-
-update_and_build: build_update build_all
+update_and_build: dependencies build_all
 
 launch:
 	ros2 launch backpack_bringup backpack_app.launch.py
@@ -81,5 +57,5 @@ record_sensor_bag:
 
 test:
 	colcon test-result --all --delete-yes
-	colcon test --ctest-args tests --packages-select backpack_bringup system_stats_pkg
+	colcon test --ctest-args tests
 	colcon test-result --all --verbose

@@ -27,11 +27,19 @@ Clone the repository and initialise submodules with
 
 ## Build the project
 
-Build the project with
+Build the project dependencies with:
 
   ```bash
   cd ~/ros2_ws
-  make setup
+  make dependencies
+  echo "source $HOME/ros2_ws_dependencies/install/setup.bash" >> ~/.bashrc
+  ```
+
+Build the project with:
+
+  ```bash
+  cd ~/ros2_ws
+  source ~/.bashrc
   make update_and_build
   ```
 
@@ -119,5 +127,3 @@ To run all the colcon tests and flake8 linter, run:
   ```bash
   make test
   ```
-
-When adding a new (non-library) package, remember to add the package name to the `colcon test --ctest-args tests` line in the `Makefile`.
